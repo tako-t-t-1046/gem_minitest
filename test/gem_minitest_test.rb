@@ -9,21 +9,25 @@ class GemMinitestTest < Minitest::Test
   end
 
   def test_odd?
-    assert @main.odd?(1), '1 is odd'
-    refute @main.odd?(2), '2 is not odd'
-    assert @main.odd?(3), '3 is odd'
-    refute @main.odd?(4), '4 is not odd'
+    assert_equal true,  @main.odd?(1), '1 is odd'
+    assert_equal false, @main.odd?(0), '0 is not odd'
+    assert_equal true,  @main.odd?(10001), '10001 is odd'
+    assert_equal false, @main.odd?(10000), '10000 is not odd'
+    assert_equal true,  @main.odd?(-1), '-1 is odd'
+    assert_equal false, @main.odd?(-100), '-100 is not odd'
+    assert_equal true,  @main.odd?(-10001), '-10001 is odd'
+    assert_equal false, @main.odd?(-10000), '-10000 is not odd'
   end
 
   def test_check_number?
     assert_equal true,  @main.check_number?(2016), '2016 is even'
     assert_equal false, @main.check_number?(3405), '3405 is not even'
     assert_equal true,  @main.check_number?(1000000), '1000000 is even'
-    assert_equal false,  @main.check_number?(1000001), '1000000 is not even'
+    assert_equal false, @main.check_number?(1000001), '1000000 is not even'
     assert_equal false, @main.check_number?(876), '876 is not 4 digit'
     assert_equal false, @main.check_number?(111), '111 is not 4 digit'
     assert_equal true,  @main.check_number?(-1000), '-1000 is even'
-    assert_equal false,  @main.check_number?(-1999), '-1999 is not even'
+    assert_equal false, @main.check_number?(-1999), '-1999 is not even'
     assert_equal true,  @main.check_number?(-1000000), '-1000000 is even'
     assert_equal false, @main.check_number?(-1000001), '-1000001 is not even'
     assert_equal false, @main.check_number?(-876), '-876 is not 4 digit'
