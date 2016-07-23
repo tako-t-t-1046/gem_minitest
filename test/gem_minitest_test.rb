@@ -16,10 +16,18 @@ class GemMinitestTest < Minitest::Test
   end
 
   def test_check_number?
-    assert @main.check_number?(2016), '2016 is even'
-    refute @main.check_number?(3405), '3405 is not even'
-    refute @main.check_number?(876), '876 is not 4 digit and even'
-    refute @main.check_number?(100), '100 is not 4 digit'
+    assert_equal true,  @main.check_number?(2016), '2016 is even'
+    assert_equal false, @main.check_number?(3405), '3405 is not even'
+    assert_equal true,  @main.check_number?(1000000), '1000000 is even'
+    assert_equal false,  @main.check_number?(1000001), '1000000 is not even'
+    assert_equal false, @main.check_number?(876), '876 is not 4 digit'
+    assert_equal false, @main.check_number?(111), '111 is not 4 digit'
+    assert_equal true,  @main.check_number?(-1000), '-1000 is even'
+    assert_equal false,  @main.check_number?(-1999), '-1999 is not even'
+    assert_equal true,  @main.check_number?(-1000000), '-1000000 is even'
+    assert_equal false, @main.check_number?(-1000001), '-1000001 is not even'
+    assert_equal false, @main.check_number?(-876), '-876 is not 4 digit'
+    assert_equal false, @main.check_number?(-111), '-111 is not 4 digit'
   end
 
   def test_enough_length?

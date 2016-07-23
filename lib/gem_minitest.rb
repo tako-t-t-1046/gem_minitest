@@ -13,7 +13,9 @@ module GemMinitest
     
     def check_number?(n)
       length = n.to_s.length
-      if length == 4 && n % 2 == 0
+      if length >= 5 && n % 2 == 0
+          return true
+      elsif length == 4 && n % 2 == 0 && n > 0
           return true
       else
         return false
